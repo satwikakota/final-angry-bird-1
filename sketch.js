@@ -73,3 +73,8 @@ function mouseDragged(){
 function mouseReleased(){
     sling.fly();   
 }
+function keyPressed(){
+    if(keyCode == 32){
+        sling.attach(bird.body);
+    }
+}

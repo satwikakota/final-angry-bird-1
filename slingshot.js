@@ -41,4 +41,7 @@ class Slingshot{
     fly(){
         this.slingshot.bodyA=null
     }
+    attach(body1){
+        this.slingshot.bodyA=body1; 
+    }
 }
