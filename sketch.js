@@ -6,8 +6,10 @@ const Constraint = Matter.Constraint;
 var engine, world;
 var box1, pig1;
 var backgroundIMG; 
+var bg; 
+bg="sprites/bg2.jpg"; 
 function preload(){
-    backgroundIMG=loadImage("sprites/bg.png");
+    getBGTime()
 
 
 
@@ -42,7 +44,8 @@ function setup(){
 }
 
 function draw(){
-    background(backgroundIMG);
+    if(backgroundIMG)
+        background(backgroundIMG);
     Engine.update(engine);
     console.log(box2.body.position.x);
     console.log(box2.body.position.y);
@@ -77,4 +80,18 @@ function keyPressed(){
     if(keyCode == 32){
         sling.attach(bird.body);
     }
+}
+async function getBGTime(){
+    var response= await fetch ("http://worldtimeapi.org/api/timezone/America/New_York");
+    var responseJSON = await response.json(); 
+    var datetime= responseJSON.datetime; 
+    var hour=datetime.slice(11,13);
+    if(hour>6 & hour <18){
+        bg="sprites/bg.png";
+    }
+    else{
+        bg="sprites/bg2.jpg"; 
+    }
+    backgroundIMG= loadImage(bg);
+
 }
