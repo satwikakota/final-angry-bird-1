@@ -47,9 +47,6 @@ function draw(){
     if(backgroundIMG)
         background(backgroundIMG);
     Engine.update(engine);
-    console.log(box2.body.position.x);
-    console.log(box2.body.position.y);
-    console.log(box2.body.angle);
     box1.display();
     box2.display();
     ground.display();
@@ -82,7 +79,7 @@ function keyPressed(){
     }
 }
 async function getBGTime(){
-    var response= await fetch ("http://worldtimeapi.org/api/timezone/America/New_York");
+    var response= await fetch ("https://worldtimeapi.org/api/timezone/America/New_York");
     var responseJSON = await response.json(); 
     var datetime= responseJSON.datetime; 
     var hour=datetime.slice(11,13);
